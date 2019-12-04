@@ -94,4 +94,23 @@ public class DailyTransJournalResponseDTO {
 		this.v_count=v_count;
 	}
 
+	@Override
+	public String toString() {
+		return store + "," + drawer_code + ","
+				+ dttrandate + "," + custnbr + "," + name + "," + lc_code
+				+ "," + transaction_number + "," + bo_check_num
+				+ "," + issuing_check_amount + "," + tran_amt + ","
+				+ principal + "," + fees + "," + interestfee + "," + nsfamt + ","
+				+ orig_fee + "," + late_fee_charged + "," + other_fee + ","
+				+ waived_fee_amt + "," + lien_fee + "," + waive_lien_fee + ","
+				+ repo_fee + "," + sale_fee + "," + cashamt + "," + checkamt + ","
+				+ ccmoamt + "," + debitcardamt + "," + ach_amt + ","
+				+ prepaidcard_amt + "," + rcc_fee + "," + emp_number + "," + empname
+				+ "," + type + "," + void_flag + "," + collateral_type
+				+ "," + orig_store_number + "," + ppf_fee + "," + mhc_fee
+				+ "," + v_count +"\n";
+	}
+	
+	
+
 }

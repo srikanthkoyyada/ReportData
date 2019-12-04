@@ -14,5 +14,7 @@ public class DailyTransJournalRequestDTO {
 	private int offset;
 	private int limit;
 	private String totalCountFlag;
+	private String sortOrder;
+	private String sortColumn;
 
 }
