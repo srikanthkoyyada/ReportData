@@ -16,5 +16,8 @@ public class DailyTransJournalRequestDTO {
 	private String totalCountFlag;
 	private String sortOrder;
 	private String sortColumn;
+	private String[] selectedColumnNames;
+	private String[] selectedColumnValues;
+	private String transDataFileName;
 
 }

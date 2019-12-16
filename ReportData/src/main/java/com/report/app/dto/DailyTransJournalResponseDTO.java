@@ -1,5 +1,8 @@
 package com.report.app.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,13 +49,28 @@ public class DailyTransJournalResponseDTO {
 	private String mhc_fee;
 	private String v_count;
 
-	public DailyTransJournalResponseDTO(String store, String drawer_code, String dttrandate, String custnbr,
-			String name, String lc_code, String transaction_number, String bo_check_num, String issuing_check_amount,
-			String tran_amt, String principal, String fees, String interestfee, String nsfamt, String orig_fee,
-			String late_fee_charged, String other_fee, String waived_fee_amt, String lien_fee, String waive_lien_fee,
-			String repo_fee, String sale_fee, String cashamt, String checkamt, String ccmoamt, String debitcardamt,
-			String ach_amt, String prepaidcard_amt, String rcc_fee, String emp_number, String empname, String type,
-			String void_flag, String collateral_type, String orig_store_number, String ppf_fee, String mhc_fee,String v_count) {
+	@JsonCreator
+	public DailyTransJournalResponseDTO(@JsonProperty("store") String store,
+			@JsonProperty("drawer_code") String drawer_code, @JsonProperty("dttrandate") String dttrandate,
+			@JsonProperty("custnbr") String custnbr, @JsonProperty("name") String name,
+			@JsonProperty("lc_code") String lc_code, @JsonProperty("transaction_number") String transaction_number,
+			@JsonProperty("bo_check_num") String bo_check_num,
+			@JsonProperty("issuing_check_amount") String issuing_check_amount,
+			@JsonProperty("tran_amt") String tran_amt, @JsonProperty("principal") String principal,
+			@JsonProperty("fees") String fees, @JsonProperty("interestfee") String interestfee,
+			@JsonProperty("nsfamt") String nsfamt, @JsonProperty("orig_fee") String orig_fee,
+			@JsonProperty("late_fee_charged") String late_fee_charged, @JsonProperty("other_fee") String other_fee,
+			@JsonProperty("waived_fee_amt") String waived_fee_amt, @JsonProperty("lien_fee") String lien_fee,
+			@JsonProperty("waive_lien_fee") String waive_lien_fee, @JsonProperty("repo_fee") String repo_fee,
+			@JsonProperty("sale_fee") String sale_fee, @JsonProperty("cashamt") String cashamt,
+			@JsonProperty("checkamt") String checkamt, @JsonProperty("ccmoamt") String ccmoamt,
+			@JsonProperty("debitcardamt") String debitcardamt, @JsonProperty("ach_amt") String ach_amt,
+			@JsonProperty("prepaidcard_amt") String prepaidcard_amt, @JsonProperty("rcc_fee") String rcc_fee,
+			@JsonProperty("emp_number") String emp_number, @JsonProperty("empname") String empname,
+			@JsonProperty("type") String type, @JsonProperty("void_flag") String void_flag,
+			@JsonProperty("collateral_type") String collateral_type,
+			@JsonProperty("orig_store_number") String orig_store_number, @JsonProperty("ppf_fee") String ppf_fee,
+			@JsonProperty("mhc_fee") String mhc_fee, @JsonProperty("v_count") String v_count) {
 		super();
 		this.store = store;
 		this.drawer_code = drawer_code;
@@ -91,26 +109,19 @@ public class DailyTransJournalResponseDTO {
 		this.orig_store_number = orig_store_number;
 		this.ppf_fee = ppf_fee;
 		this.mhc_fee = mhc_fee;
-		this.v_count=v_count;
+		this.v_count = v_count;
 	}
 
 	@Override
 	public String toString() {
-		return store + "," + drawer_code + ","
-				+ dttrandate + "," + custnbr + "," + name + "," + lc_code
-				+ "," + transaction_number + "," + bo_check_num
-				+ "," + issuing_check_amount + "," + tran_amt + ","
-				+ principal + "," + fees + "," + interestfee + "," + nsfamt + ","
-				+ orig_fee + "," + late_fee_charged + "," + other_fee + ","
-				+ waived_fee_amt + "," + lien_fee + "," + waive_lien_fee + ","
-				+ repo_fee + "," + sale_fee + "," + cashamt + "," + checkamt + ","
-				+ ccmoamt + "," + debitcardamt + "," + ach_amt + ","
-				+ prepaidcard_amt + "," + rcc_fee + "," + emp_number + "," + empname
-				+ "," + type + "," + void_flag + "," + collateral_type
-				+ "," + orig_store_number + "," + ppf_fee + "," + mhc_fee
-				+ "," + v_count +"\n";
+		return store + "," + drawer_code + "," + dttrandate + "," + custnbr + "," + name + "," + lc_code + ","
+				+ transaction_number + "," + bo_check_num + "," + issuing_check_amount + "," + tran_amt + ","
+				+ principal + "," + fees + "," + interestfee + "," + nsfamt + "," + orig_fee + "," + late_fee_charged
+				+ "," + other_fee + "," + waived_fee_amt + "," + lien_fee + "," + waive_lien_fee + "," + repo_fee + ","
+				+ sale_fee + "," + cashamt + "," + checkamt + "," + ccmoamt + "," + debitcardamt + "," + ach_amt + ","
+				+ prepaidcard_amt + "," + rcc_fee + "," + emp_number + "," + empname + "," + type + "," + void_flag
+				+ "," + collateral_type + "," + orig_store_number + "," + ppf_fee + "," + mhc_fee + "," + v_count
+				+ "\n";
 	}
-	
-	
 
 }

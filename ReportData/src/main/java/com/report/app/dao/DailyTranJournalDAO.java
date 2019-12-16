@@ -5,7 +5,6 @@ import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.QueryHint;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.annotations.QueryHints;
@@ -22,6 +21,7 @@ public class DailyTranJournalDAO {
 	private EntityManager entityManager;
 
 	public List<DailyTransJournalResponseDTO> getAll(DailyTransJournalRequestDTO request) {
+		
 		TypedQuery<DailyTransJournalResponseDTO> query = entityManager.createNamedQuery("DailyTransJournalQuery",
 				DailyTransJournalResponseDTO.class);
 		// set parameters
@@ -41,11 +41,12 @@ public class DailyTranJournalDAO {
 	}
 
 	public Stream<DailyTransJournalResponseDTO> getAllTransStream(DailyTransJournalRequestDTO request) {
-		TypedQuery<DailyTransJournalResponseDTO> query = entityManager.createNamedQuery("DailyTransJournalQuery",
-				DailyTransJournalResponseDTO.class);
-		// .setHint("HINT_FETCH_SIZE", Integer.MIN_VALUE);
-		// .setHint(QueryHints.HINT_READONLY, true)
-		// .setHint(QueryHints.HINT_CACHEABLE, false);
+		TypedQuery<DailyTransJournalResponseDTO> query = entityManager
+				.createNamedQuery("DailyTransJournalQuery",
+				DailyTransJournalResponseDTO.class)
+				.setHint(QueryHints.READ_ONLY, true)
+				.setHint(QueryHints.CACHEABLE, false);
+		
 		// set parameters
 		query.setParameter(1, request.getLevel());
 		query.setParameter(2, 0);
@@ -54,9 +55,9 @@ public class DailyTranJournalDAO {
 		query.setParameter(5, request.getEndDate());
 		query.setParameter(6, "getOne");
 		query.setParameter(7, "DESC");
-		query.setParameter(8, request.getOffset());
-		query.setParameter(9, request.getLimit());
-		query.setParameter(10, request.getTotalCountFlag());
+		query.setParameter(8, 0);
+		query.setParameter(9, 0);
+		query.setParameter(10, "N");
 		return query.getResultStream();
 	}
 	

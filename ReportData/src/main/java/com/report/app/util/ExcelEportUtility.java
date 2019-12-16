@@ -23,7 +23,9 @@ public class ExcelEportUtility {
 	}
 
 	private void fillHeader(String[] columns) {
-		wb = new SXSSFWorkbook(100); // keep 100 rows in memory, exceeding rows will be flushed to disk
+		wb = new SXSSFWorkbook(); // keeps 100 rows in memory, exceeding rows will be flushed to disk
+		wb.setCompressTempFiles(true);
+		
 		sh = wb.createSheet("DTJ Report Data");
 
 		for (int rownum = 0; rownum < 1; rownum++) {
