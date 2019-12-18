@@ -21,7 +21,6 @@ public class DailyTranJournalDAO {
 	private EntityManager entityManager;
 
 	public List<DailyTransJournalResponseDTO> getAll(DailyTransJournalRequestDTO request) {
-		
 		TypedQuery<DailyTransJournalResponseDTO> query = entityManager.createNamedQuery("DailyTransJournalQuery",
 				DailyTransJournalResponseDTO.class);
 		// set parameters

@@ -14,7 +14,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -146,6 +145,7 @@ public class DailyTransJournalController {
 		request.setSortOrder(sortOrder);
 		request.setTransType(transType);
 		List<DailyTransJournalResponseDTO> trans = dailyTransJournalDAO.getAll(request);
+		byte[] outArray=null;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_hh_mm_ss");
 		String excelFileName = "DTJReport_" + formatter.format(LocalDateTime.now()) + ".xlsx";
 		SXSSFWorkbook wb = (new ExcelEportUtility().exportExcel(new String[] {"STORE NBR","DRAWER NBR",
@@ -159,7 +159,7 @@ public class DailyTransJournalController {
 		try {
 			ByteArrayOutputStream outByteStream = new ByteArrayOutputStream();
 			wb.write(outByteStream);
-			byte[] outArray = outByteStream.toByteArray();
+			outArray = outByteStream.toByteArray();
 			response.setContentType("application/vnd.ms-excel");
 			response.setContentLength(outArray.length);
 			response.setHeader("Expires:", "0"); // eliminates browser caching
@@ -171,6 +171,7 @@ public class DailyTransJournalController {
 			outStream.flush();
 			wb.dispose();
 			wb.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
